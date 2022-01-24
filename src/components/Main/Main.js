@@ -1,11 +1,11 @@
-import react, { useEffect } from "react";
+import react from "react";
 import Card from "../Card/Card";
 import api from "../../utils/Api";
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
-  const [userName, setUserName] = react.useState();
-  const [userDescription, setUserDescription] = react.useState();
-  const [userAvatar, setUserAvatar] = react.useState();
+  const [userName, setUserName] = react.useState(null);
+  const [userDescription, setUserDescription] = react.useState(null);
+  const [userAvatar, setUserAvatar] = react.useState(null);
   const [cards, setCards] = react.useState([]);
 
   react.useEffect(() => {

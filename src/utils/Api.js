@@ -17,7 +17,7 @@ class Api {
       headers: {
         authorization: this.token,
       },
-    }).then((res) => this._getResponseData(res));
+    }).then(this._getResponseData);
   }
 
   getInitialCards() {
@@ -25,7 +25,7 @@ class Api {
       headers: {
         authorization: this.token,
       },
-    }).then((res) => this._getResponseData(res));
+    }).then(this._getResponseData);
   }
 
   editProfileData(data) {
@@ -39,7 +39,7 @@ class Api {
         name: data.name,
         about: data.about,
       }),
-    }).then((res) => this._getResponseData(res));
+    }).then(this._getResponseData);
   }
 
   createCard(data) {
@@ -53,7 +53,7 @@ class Api {
         name: data.name,
         link: data.link,
       }),
-    }).then((res) => this._getResponseData(res));
+    }).then(this._getResponseData);
   }
 
   deleteCard(data) {
@@ -62,7 +62,7 @@ class Api {
       headers: {
         authorization: this.token,
       },
-    }).then((res) => this._getResponseData(res));
+    }).then(this._getResponseData);
   }
 
   likeCard(data) {
@@ -71,7 +71,7 @@ class Api {
       headers: {
         authorization: this.token,
       },
-    }).then((res) => this._getResponseData(res));
+    }).then(this._getResponseData);
   }
 
   deleteLike(data) {
@@ -80,7 +80,7 @@ class Api {
       headers: {
         authorization: this.token,
       },
-    }).then((res) => this._getResponseData(res));
+    }).then(this._getResponseData);
   }
 
   editAvatar(data) {
@@ -93,7 +93,7 @@ class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
-    }).then((res) => this._getResponseData(res));
+    }).then(this._getResponseData);
   }
 }
 
