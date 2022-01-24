@@ -1,4 +1,3 @@
-import react from "react";
 import { useState } from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
@@ -7,11 +6,10 @@ import Main from "../Main/Main";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 function App() {
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = react.useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = react.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = react.useState(false);
-  const [selectedCard, setSelectedCard] = react.useState(null);
-  const [isViewOpen, setIsViewOpen] = react.useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({});
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -27,15 +25,13 @@ function App() {
 
   function handleCardCLick(card) {
     setSelectedCard(card);
-    setIsViewOpen(true);
   }
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setSelectedCard(null);
-    setIsViewOpen(false);
+    setSelectedCard({});
   }
 
   return (
@@ -51,9 +47,9 @@ function App() {
         <Footer />
 
         <PopupWithForm
-          name={"edit"}
-          title={"Редактировать профиль"}
-          buttonTitle={"Сохранить"}
+          name="edit"
+          title="Редактировать профиль"
+          buttonTitle="Сохранить"
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
         >
@@ -84,9 +80,9 @@ function App() {
         </PopupWithForm>
 
         <PopupWithForm
-          name={"add"}
-          title={"Новое место"}
-          buttonTitle={"Добавить"}
+          name="add"
+          title="Новое место"
+          buttonTitle="Добавить"
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
         >
@@ -114,9 +110,9 @@ function App() {
         </PopupWithForm>
 
         <PopupWithForm
-          name={"edit-avatar"}
-          title={"Обновить аватар"}
-          buttonTitle={"Сохранить"}
+          name="edit-avatar"
+          title="Обновить аватар"
+          buttonTitle="Сохранить"
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
         >
@@ -135,12 +131,12 @@ function App() {
         </PopupWithForm>
 
         <PopupWithForm
-          name={"confirm"}
-          title={"Вы уверены?"}
-          buttonTitle={"Да"}
+          name="confirm"
+          title="Вы уверены?"
+          buttonTitle="Да"
         ></PopupWithForm>
 
-        {isViewOpen ? <ImagePopup card={selectedCard} onClose={closeAllPopups} /> : ""}
+        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </div>
     </div>
   );
