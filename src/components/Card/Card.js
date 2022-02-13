@@ -41,7 +41,9 @@ function Card({ onCardClick, card, onCardLike, onCardDelete }) {
             className={cardLikeButtonClassName}
             onClick={handleLikeClick}
           ></button>
-          <p className='element__likes-number'>{likes.length}</p>
+          <p className='element__likes-number'>
+            {likes.length !== 0 ? likes.length : ''}
+          </p>
         </div>
       </div>
     </article>

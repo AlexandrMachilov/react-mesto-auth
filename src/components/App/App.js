@@ -20,10 +20,10 @@ function App() {
   const [cards, setCards] = react.useState([]);
 
   react.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((cards) => {
+    Promise.all([api.getProfileInfo(), api.getInitialCards()])
+      .then(([userData, cards]) => {
         setCards(cards);
+        setCurrentUser(userData);
       })
       .catch((err) => {
         console.log('Ошибка', err);
@@ -54,18 +54,6 @@ function App() {
         console.log('Ошибка', err);
       });
   }
-
-  react.useEffect(() => {
-    api
-      .getProfileInfo()
-      .then((userData) => {
-        setCurrentUser(userData);
-        console.log(userData);
-      })
-      .catch((err) => {
-        console.log('Ошибка', err);
-      });
-  }, []);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
