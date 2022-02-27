@@ -27,11 +27,7 @@ function Login({ handleLogin }) {
     <main className='content content__sign'>
       <section className='sign content__section'>
         <h3 className='sign__title'>Вход</h3>
-        <form
-          className={`sign__form sign__form_login`}
-          onSubmit={handleSubmit}
-          noValidate
-        >
+        <form className={`sign__form sign__form_login`} onSubmit={handleSubmit}>
           <input
             value={formData.email}
             onChange={handleChange}
@@ -54,7 +50,6 @@ function Login({ handleLogin }) {
             required
           />
           <button
-            onSubmit={handleSubmit}
             type='submit'
             className={`sign__button sign__button_action_submit sign__button_action_login`}
           >

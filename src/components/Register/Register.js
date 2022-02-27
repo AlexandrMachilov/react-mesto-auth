@@ -24,11 +24,7 @@ function Register({ handleRegister }) {
     <main className='content content__sign'>
       <section className='sign content__section'>
         <h3 className='sign__title'>Регистрация</h3>
-        <form
-          className={`sign__form sign__form_register`}
-          onSubmit={handleSubmit}
-          noValidate
-        >
+        <form className={`sign__form sign__form_register`} onSubmit={handleSubmit}>
           <input
             value={formData.email}
             onChange={handleChange}
@@ -51,7 +47,6 @@ function Register({ handleRegister }) {
             required
           />
           <button
-            onSubmit={handleSubmit}
             type='submit'
             className={`sign__button sign__button_action_submit sign__button_action_register`}
           >

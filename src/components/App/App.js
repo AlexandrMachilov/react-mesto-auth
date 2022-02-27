@@ -56,9 +56,8 @@ function App() {
   function handleCardDelete(card) {
     api
       .deleteCard(card)
-      .then((newCard) => {
-        const newCards = cards.filter((c) => c._id !== card._id);
-        setCards(newCards);
+      .then(() => {
+        setCards((newCards) => newCards.filter((c) => c._id !== card._id));
       })
       .catch((err) => {
         console.log('Ошибка', err);
@@ -143,12 +142,13 @@ function App() {
     Auth.register(formData.password, formData.email)
       .then(() => {
         setIsDataCorrect(true);
-        setIsInfoTooltipOpen(true);
         navigate('./sign-in');
       })
       .catch((err) => {
         console.log(err);
         setIsDataCorrect(false);
+      })
+      .finally(() => {
         setIsInfoTooltipOpen(true);
       });
   }
@@ -156,12 +156,16 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
-      Auth.tokenCheck(token).then((res) => {
-        if (res) {
-          setUserEmail(res.data.email);
-          setIsLoggedIn(true);
-        }
-      });
+      Auth.checkToken(token)
+        .then((res) => {
+          if (res) {
+            setUserEmail(res.data.email);
+            setIsLoggedIn(true);
+          }
+        })
+        .catch((err) => {
+          console.log('Ошибка', err);
+        });
     }
   }, [isLoggedIn]);
 

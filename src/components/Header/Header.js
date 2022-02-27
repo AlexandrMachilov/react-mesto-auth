@@ -3,8 +3,8 @@ import headerLogo from '../../images/logo-header.svg';
 import { Link } from 'react-router-dom';
 
 function Header({ isLoggedIn, userEmail, handleExit }) {
-  let location = useLocation();
-  let button = {
+  const location = useLocation();
+  const button = {
     link: '',
     text: '',
   };
