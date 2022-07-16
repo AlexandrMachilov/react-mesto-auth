@@ -1,6 +1,7 @@
 /* export const BASE_URL = 'https://auth.nomoreparties.co'; */
 export const BASE_URL = 'https://api.mesto.ypraktikum.nomoredomains.work';
-/* export const BASE_URL = 'http://localhost:3001'; */
+/* export const BASE_URL = 'http://localhost:3001'; 
+const BASE_URL = process.env.MESTO_BASE_URL || 'http://localhost:3001';*/
 
 const HEADERS = {
   Accept: 'application/json',
@@ -13,7 +14,7 @@ const getJson = (res) => {
   throw new Error({ status: res.status });
 };
 
-export const register = (password, email) => {
+export const register = ({ password, email }) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: HEADERS,
